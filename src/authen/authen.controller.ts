@@ -29,7 +29,7 @@ export class AuthenController {
   @Post('signup') //N-POINTE: auth/signup
   async signUp(@Body() signupData: SignupDto, @Res() res: Response) {
     this.authenService.signup(signupData);
-    res.redirect('authen/login');
+    res.redirect('/authen/login');
   }
 
   @UseGuards(LoginGuard)
