@@ -1,0 +1,65 @@
+{{#> admin}}
+  {{#*inline "content"}}
+   <!-- Author: FormBold Team -->
+   <div class="text-lg font-bold mb-3 flex justify-between items-center">
+      <div>
+          All Concert
+      </div>
+      <a href="/tickets/create" class="px-4 py-3 bg-blue-600 font-semibold text-white rounded-lg cursor-pointer">
+        Add Concert
+      </a>
+      
+    </div>
+ <div class="flex flex-col">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+        <table
+          class="min-w-full text-center text-sm font-light text-surface dark:text-white">
+          <thead
+            class="border-b border-neutral-200 bg-blue-800 font-medium text-white dark:border-white/10">
+            <tr>
+              <th scope="col" class=" px-6 py-4">#</th>
+              <th scope="col" class=" px-6 py-4">Title</th>
+              <th scope="col" class=" px-6 py-4">Group</th>
+                 <th scope="col" class=" px-6 py-4">Genre</th>
+                  <th scope="col" class=" px-6 py-4">Location</th>
+                  <th scope="col" class=" px-6 py-4">Price</th>
+                   <th scope="col" class=" px-6 py-4">Date</th>
+                    <th scope="col" class=" px-6 py-4">Description</th>
+                      <th scope="col" class=" px-6 py-4">Image</th>
+              <th scope="col" class=" px-6 py-4">Action</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            
+           {{#each viewData.tickets}}
+           
+            <tr class="border-b border-neutral-200 dark:border-white/10">
+              <td class="whitespace-nowrap  px-6 py-4 font-medium">{{ @index }}</td>
+              <td class="whitespace-nowrap  px-6 py-4 text-gray-900">{{ title }}</td>
+              <td class="whitespace-nowrap  px-6 py-4">{{ group }}</td>
+               <td class="whitespace-nowrap  px-6 py-4">{{ genre }}</td>
+                <td class="whitespace-nowrap  px-6 py-4">{{ location }}</td>
+                <td class="whitespace-nowrap  px-6 py-4">{{ price }}</td>
+                <td class="whitespace-nowrap  px-6 py-4">{{ dateformat }}</td>
+                <td class="whitespace-nowrap  px-6 py-4">{{ description }}</td>
+                <td class="whitespace-nowrap  px-6 py-4"><img src="/images/{{ image_url }}" alt="concert"></td>
+              <td class="whitespace-nowrap  px-6 py-4 flex gap-x-3">
+                <a href="/ticket/{{ id }}">view</a>
+                <a href="delete/{{ id }}" class="text-red-800">delete</a>
+                 <a href="edit/{{ id }}">edit</a>
+
+              </td>
+            </tr>
+            {{/each}}
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+  {{/inline}}
+{{/admin}}

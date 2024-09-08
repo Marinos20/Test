@@ -1,0 +1,91 @@
+{{#> appc}}
+{{#*inline "content"}}
+<section class="bg-black py-8 antialiased dark:bg-gray-900 md:py-16 text-pink-600">
+    <div class="mx-auto max-w-screen-xl p-4 2xl:px-0 rounded-lg">
+        <div class="mx-auto max-w-5xl">
+            <h2 class="text-2xl font-semibold text-white-900 sm:text-2xl">Payment Method</h2>
+
+            <form class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12 text-pink-600" action="/reservations/reservation/{{ viewData.concert.id }}" method="post">
+                <div class="mt-6 grow sm:mt-8 lg:mt-0">
+                    <div class="space-y-4 border-t border-pink-600 p-6 dark:border-gray-700 dark:bg-gray-800">
+                        <div class="space-y-2">
+                            <dl class="flex items-center justify-between gap-4">
+                                <dt class="text-base font-normal">Original price</dt>
+                                <dd class="text-base font-medium">${{ viewData.concert.price }}</dd>
+                            </dl>
+
+                            <dl class="flex items-center justify-between gap-4">
+                                <dt class="text-base font-normal">Number of Tickets
+                                </dt>
+                                <dd class="text-base font-medium">01</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                            <div
+                                class="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
+                                <div class="flex items-start">
+                                    <div class="flex h-5 items-center">
+                                        <input id="credit-card" aria-describedby="credit-card-text" type="radio"
+                                            name="payment-method" value="paypal"
+                                            class="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                                            checked />
+                                    </div>
+
+                                    <div class="ms-4 text-sm">
+                                        <img class="h-24 w-auto dark:hidden"
+                                            src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/paypal.svg"
+                                            alt="" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
+                                <div class="flex items-start">
+                                    <div class="flex h-5 items-center">
+                                        <input id="pay-on-delivery" aria-describedby="pay-on-delivery-text" type="radio"
+                                            name="payment-method" value="mastercard"
+                                            class="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600" />
+                                    </div>
+
+                                    <div class="ms-4 text-sm">
+                                        <img class="h-24 w-auto dark:hidden"
+                                            src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/mastercard.svg"
+                                            alt="" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
+                                <div class="flex items-start">
+                                    <div class="flex h-5 items-center">
+                                        <input id="paypal-2" aria-describedby="paypal-text" type="radio"
+                                            name="payment-method" value="visa"
+                                            class="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600" />
+                                    </div>
+
+                                    <div class="ms-4 text-sm">
+                                        <img class="h-24 w-auto dark:hidden"
+                                            src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/visa.svg"
+                                            alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4 w-full flex justify-center items-center">
+                        <button type="submit" class="border p-2 bg-pink-600 text-white text-xl text-center w-28">
+                            Pay Now
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{{/inline}}
+{{/appc}}

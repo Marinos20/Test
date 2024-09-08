@@ -1,0 +1,136 @@
+{{#> appc}}
+{{#*inline "content"}}
+
+<style>
+    .swiper-wrapper {
+        height: max-content !important;
+
+        width: max-content;
+    }
+
+    .swiper-button-prev:after,
+    .swiper-rtl .swiper-button-next:after {
+        content: "" !important;
+    }
+
+    .swiper-button-next:after,
+    .swiper-rtl .swiper-button-prev:after {
+        content: "" !important;
+
+    }
+
+    .product-thumb .swiper-slide.swiper-slide-thumb-active>.slide\:border-indigo-600 {
+        --tw-border-opacity: 1;
+        border-color: rgb(79 70 229 / var(--tw-border-opacity));
+    }
+</style>
+
+<section class="py-10 lg:py-24 bg-black text-white">
+    <div class="mx-auto max-w-7xl p-4 sm:px-6 lg:p-8 border-l border-b rounded-b-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 w-full">
+            <div
+                class="pro-detail w-full flex flex-col justify-center order-last lg:order-none max-lg:max-w-[608px] max-lg:mx-auto">
+                <h2 class="mb-2 font-manrope font-bold text-5xl leading-10 pb-2 ">{{ viewData.concert.title }}
+                </h2>
+                <div class="flex flex-col sm:flex-row sm:items-center mb-6">
+                    <h3 class="font-semibold text-xl text-white leading-9">
+                       {{ viewData.concert.date }}</h3>
+                </div>
+                <p class="text-xl font-normal mb-8 ">
+                    {{ viewData.concert.description }}
+                </p>
+                <div class="flex items-center justify-between mb-8">
+                    <p class="text-xl font-normal">Location :</p>
+                    <p class="text-xl font-normal">
+                    {{ viewData.concert.location }}
+                </p>
+                </div>
+                 <div class="flex items-center justify-between mb-8">
+                    <p class="text-xl font-normal">Group :</p>
+                    <p class="text-xl font-normal">
+                    {{ viewData.concert.group }}
+                </p>
+                </div>
+               <div class="flex items-center justify-between mb-8">
+                    <p class="text-xl font-normal">Genre :</p>
+                    <p class="text-xl font-normal">
+                    {{ viewData.concert.genre }}
+                </p>
+                </div>
+                <div class="flex items-center justify-between mb-8">
+                    <p class="text-xl font-normal">Price :</p>
+                    <p class="text-xl font-normal">
+                    {{ viewData.concert.price }}$
+                </p>
+                </div>
+                <div class="block w-full">
+                    <div class="text">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 ">
+                            <div class="flex items-center justify-center w-full">
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button
+                                class="group transition-all duration-500 p-4 rounded-full bg-white border border-[#DF3F6D] hover:bg-pink-900 hover:shadow-sm hover:shadow-indigo-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"
+                                    fill="none">
+                                    <path
+                                        d="M4.47084 14.3196L13.0281 22.7501L21.9599 13.9506M13.0034 5.07888C15.4786 2.64037 19.5008 2.64037 21.976 5.07888C24.4511 7.5254 24.4511 11.4799 21.9841 13.9265M12.9956 5.07888C10.5204 2.64037 6.49824 2.64037 4.02307 5.07888C1.54789 7.51738 1.54789 11.4799 4.02307 13.9184M4.02307 13.9184L4.04407 13.939M4.02307 13.9184L4.46274 14.3115"
+                                        stroke="#DF3F6D" stroke-width="1.6" stroke-miterlimit="10"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+                            <a href="/reservations/payment/{{ viewData.concert.id }}"
+                                class="text-center w-full px-5 py-4 rounded-[100px] bg-pink-600 flex items-center justify-center font-semibold text-lg text-white shadow-sm transition-all duration-500 hover:bg-pink-900 hover:shadow-pink-400">
+                                Buy Ticket Now
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="w-full flex justify-center">
+                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                    class="swiper product-prev mb-6 flex justify-center  w-2/3  h-full">
+                    <div class="w-full h-full">
+                        <div class="w-full h-full">
+                           <img src="/images/{{ viewData.concert.image_url }}" class="w-full h-full object-cover " alt="concert">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<script>
+    var swiper = new Swiper(".product-thumb", {
+        loop: true,
+        spaceBetween: 12,
+        slidesPerView: 4,
+
+        freeMode: true,
+        watchSlidesProgress: true,
+
+    });
+    var swiper2 = new Swiper(".product-prev", {
+        loop: true,
+        spaceBetween: 32,
+        effect: "fade",
+
+        thumbs: {
+            swiper: swiper,
+        },
+
+    });
+</script>
+
+
+
+{{/inline}}
+{{/appc}}
