@@ -31,17 +31,6 @@ export class AppController {
   }
 
   @UseGuards(AuthenticatedGuard)
-  @Get('search')
-  @Render('/home')
-  async search(@Body() body: any) {
-    const viewData = [];
-    viewData['concert'] = await this.appService.searchevent(body.search);
-    return {
-      viewData: viewData,
-    };
-  }
-
-  @UseGuards(AuthenticatedGuard)
   @Get('ticket/:id')
   @Render('tickets/ticket')
   async ticket(@Param('id') id: string) {
