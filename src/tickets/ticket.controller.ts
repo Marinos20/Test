@@ -21,17 +21,30 @@ import { FilesInterceptor } from '@nestjs/platform-express';
 import { Request } from 'express';
 import { RolesGuard } from '../common/guards/roles.guard';
 
-@UseGuards(RolesGuard)
+
 @Controller('tickets')
 export class TicketController {
   constructor(private readonly ticketService: TicketService) {}
 
+
+  @Post('searcha')
+  @Render('tickets/search')
+  async search(@Body() body: any) {
+    const viewData = [];
+    viewData['concert'] = await this.ticketService.search(body.search);
+    return {
+      viewData: viewData,
+    };
+  }
+
+  @UseGuards(RolesGuard)
   @Get('create')
   @Render('admin/tickets/index')
   async showCreateForm() {
     return {};
   }
 
+  @UseGuards(RolesGuard)
   @Get('admin')
   @Render('admin/tickets/show')
   async findForm() {
@@ -43,6 +56,7 @@ export class TicketController {
     };
   }
 
+  @UseGuards(RolesGuard)
   @Get('edit/:id')
   @Render('admin/tickets/edit')
   async editForm(@Param('id') id: string) {
@@ -54,6 +68,7 @@ export class TicketController {
     };
   }
 
+  @UseGuards(RolesGuard)
   @Post('create')
   @UseInterceptors(
     FilesInterceptor('image_url', 20, {
@@ -66,6 +81,8 @@ export class TicketController {
       //   fileFilter: imageFileFilter,
     }),
   )
+
+  @UseGuards(RolesGuard)
   async create(
     @Body() body: any,
     @Res() res: Response,
@@ -94,16 +111,14 @@ export class TicketController {
     }
   }
 
-  @Get()
-  async findAll() {
-    return this.ticketService.findAll();
-  }
 
+
+  @UseGuards(RolesGuard)
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return this.ticketService.findOne(id);
   }
-
+  @UseGuards(RolesGuard)
   @Post('update/:id')
   @UseInterceptors(
     FilesInterceptor('image_url', 20, {
@@ -128,6 +143,7 @@ export class TicketController {
     res.redirect('/tickets/admin');
   }
 
+  @UseGuards(RolesGuard)
   @Get('delete/:id')
   async delete(@Param('id') id: string, @Res() res: Response) {
     this.ticketService.delete(id);

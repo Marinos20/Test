@@ -52,9 +52,9 @@ export class TicketService {
     }
     return ticket;
   }
-  async search(search: string){
-    const ticket = await this.ticketModel.find().exec();
-    return search;
+  async search(title: string) {
+    const ticket = await this.ticketModel.find({ title }).exec();
+    return ticket;
   }
 
   async update(id: string, updateTicketDto: UpdateTicketDto): Promise<Ticket> {

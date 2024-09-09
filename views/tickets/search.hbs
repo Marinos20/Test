@@ -1,0 +1,107 @@
+{{#> appc}}
+{{#*inline "content"}}
+
+{{!-- <div class="flex justify-center py-4  items-center bg-black">
+    <form class="flex flex-col md:flex-row gap-3 ">
+        <div class="flex border-2 border-white rounded-lg">
+            <input type="text" placeholder="Search for the tool you like"
+                class="w-full md:w-80 px-3 h-10 rounded-l border-none focus:outline-none focus:border-sky-500">
+            <button type="submit" id="search-bar"
+                class="bg-pink-500 text-white h-full border-none px-2 md:px-3 py-0 md:py-1">Search</button>
+        </div>
+        <select id="pricingType" name="pricingType"
+            class="w-full h-10 border-2 border-white rounded-lg focus:outline-none focus:border-sky-500 text-pink-700 rounded px-2 md:px-3 py-0 md:py-1 tracking-wider">
+            <option value="All" selected="">All</option>
+            <option value="Freemium">Freemium</option>
+            <option value="Free">Free</option>
+            <option value="Paid">Paid</option>
+        </select>
+    </form>
+
+</div> --}}
+
+
+<section class="px-6 pt-6 grid grid-cols-1 sm:grid-cols-4 bg-black text-white gap-12">
+    {{!-- {{ #each 5 }} --}}
+
+    <form action="" method="POST" class="w-full pt-4">
+        {{!-- <section class="flex flex-col md:grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-10 lg:gap-12 p-4 lg:p-8">
+            --}}
+
+            <div class="col-start-1">
+                <div class="flex flex-col justify-center gap-10 h-full">
+                    <span class="text-gray-500 font-outfit">FILTER BY</span>
+                    <div class="flex flex-col gap-8 h-full">
+                        <div class="flex flex-col">
+                            <label for="" class="pb-4 text-lg font-semibold">Genre</label>
+                            <select name="genre_id"
+                                class="w-full bg-transparent border-b-[2px] border-gray-500 pb-2 focus:outline-none">
+                                <option value="0">All</option>
+                                <option value="Genre 1">Genre 1 </option>
+                                <option value="Genre 2">Genre 2 </option>
+                                <option value="Genre 3">Genre 3 </option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="" class="pb-4 text-lg font-semibold">Group</label>
+                            <select name="group_id"
+                                class="w-full bg-transparent border-b-[2px] border-gray-500 pb-2 focus:outline-none">
+                                <option value="0">All</option>
+                                <option value="Group 1">Group 1 </option>
+                                <option value="Group 2">Group 2 </option>
+                                <option value="Group 3">Group 3 </option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="date" class="text-lg font-semibold">Date</label>
+                            <input type="date" name="date" id="" placeholder="6th Ave, London"
+                                class="border-b-2 bg-black p-2 focus:outline-none text-white">
+                        </div>
+                        <button type="submit" class="py-2 bg-pink-600 text-white text-lg p-2 rounded-md hover:bg-pink-800">Filter</button>
+                    </div>
+                </div>
+            </div>
+            {{!--
+        </section> --}}
+    </form>
+
+    {{#each viewData.concert}}
+    <div class="border border-white shadow-lg p-8">
+        <a href="/ticket/{{ id }}" class="w-full">
+        <div class="flex justify-center items-center relative overflow-hidden w-full h-48">
+
+            <img class="aspect-square w-full object-cover rounded-md" src="/images/{{ image_url }}"
+                alt="Product">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+            </div>
+        </div>
+        </a>
+        
+        <div class="flex items-center">
+            <h3 class="text-2xl font-bold mt-2 border-r pr-2">{{ title }}</h3>
+            <h3 class="text-2xl font-bold mt-2 pl-2">{{ location }}</h3>
+        </div>
+        <div>
+            <h3 class="text-xl mt-4">{{ dateformat }}</h3>
+        </div>
+        <div class="py-1 flex items-center justify-between">
+            <h3 class="p-2 border border-pink-600">
+                {{ genre }}
+            </h3>
+            <h3 class="p-2 border border-pink-600">
+                {{ group }}
+            </h3>
+        </div>
+        <p class="text-sm mt-2 truncate">{{description}}</p>
+        <div class="flex items-center justify-between mt-2">
+            <span class="font-bold text-lg">{{ price }}$</span>
+            <a href="/reservations/payment/{{ id }}" class="bg-pink-600 text-white py-1 px-4 rounded-full font-bold hover:bg-pink-800">Buy ticket</a>
+        </div>
+        </a>
+    </div>
+    {{/each}}
+    {{!-- {{/each}} --}}
+</section>
+{{/inline}}
+{{/appc}}
